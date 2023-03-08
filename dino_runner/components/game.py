@@ -3,6 +3,7 @@ from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, T
 from dino_runner.components.dinosaurio import Dinosaurio 
 from dino_runner.components.cloud import Cloud1,Cloud2,Cloud3,Cloud4
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
+from dino_runner.components.player_hearts.heart_manager import HeartManager
 
 
 
@@ -23,6 +24,7 @@ class Game:
         self.cloud3 = Cloud3()
         self.cloud4 = Cloud4()
         self.obstacles_manager=ObstacleManager()
+        self.heart_manager = HeartManager()
         self.points = 0
         self.font = pygame.font.Font('freesansbold.ttf',20)
         
@@ -64,7 +66,7 @@ class Game:
     def draw(self):
         
         self.clock.tick(FPS)
-        if self.points <= 2000:
+        if self.points <= 800:
             self.screen.fill((255, 255, 255))
         else:
             self.screen.fill((0,0,0))
@@ -76,6 +78,7 @@ class Game:
         self.cloud4.draw4(self.screen)
         self.score()
         self.obstacles_manager.draw(self.screen)
+        self.heart_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
