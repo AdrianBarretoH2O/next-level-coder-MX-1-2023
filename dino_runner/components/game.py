@@ -1,7 +1,7 @@
 import pygame
-from dino_runner.utils.constants import BG,CLOUD, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 from dino_runner.components.dinosaurio import Dinosaurio 
-from dino_runner.components.cloud import Cloud,CloudTwo
+from dino_runner.components.cloud import Cloud1,Cloud2,Cloud3,Cloud4
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 
 
@@ -18,8 +18,10 @@ class Game:
         self.x_pos_bg = 0
         self.y_pos_bg = 430
         self.player = Dinosaurio()
-        self.cloud = Cloud()
-        self.cloud_two = CloudTwo()
+        self.cloud1 = Cloud1()
+        self.cloud2 = Cloud2()
+        self.cloud3 = Cloud3()
+        self.cloud4 = Cloud4()
         self.obstacles_manager=ObstacleManager()
         self.points = 0
         self.font = pygame.font.Font('freesansbold.ttf',20)
@@ -28,7 +30,7 @@ class Game:
         self.points,self.game_speed
         self.points+=1 
         if self.points % 500 == 0:
-            self.game_speed+=1
+            self.game_speed+=0.5
         
         text = self.font.render("score: "+str(self.points),True,(255,0,0))
         textRect = text.get_rect()
@@ -52,8 +54,10 @@ class Game:
     def update(self):
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
-        self.cloud.updatec()
-        self.cloud_two.updatec2()
+        self.cloud1.update1()
+        self.cloud2.update2()
+        self.cloud3.update3()
+        self.cloud4.update4()
         self.score()
         self.obstacles_manager.update(self.game_speed,self)
         
@@ -66,8 +70,10 @@ class Game:
             self.screen.fill((0,0,0))
         self.draw_background()
         self.player.draw(self.screen)
-        self.cloud.drawc(self.screen)
-        self.cloud_two.drawc2(self.screen)
+        self.cloud1.draw1(self.screen)
+        self.cloud2.draw2(self.screen)
+        self.cloud3.draw3(self.screen)
+        self.cloud4.draw4(self.screen)
         self.score()
         self.obstacles_manager.draw(self.screen)
         pygame.display.update()
