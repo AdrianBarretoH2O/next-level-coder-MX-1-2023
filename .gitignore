@@ -130,4 +130,9 @@ dmypy.json
 
 .idea
 .DS_Store
+/venvs
 dino_venv/
+
+*.vs
+*.code-workspace
+*.gitignore

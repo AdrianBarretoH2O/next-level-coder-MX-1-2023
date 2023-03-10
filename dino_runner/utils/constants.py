@@ -1,15 +1,25 @@
 import pygame
 import os
 
+pygame.mixer.init()
+
 # Global Constants
 TITLE = "Chrome Dino Runner"
-SCREEN_HEIGHT = 650
-SCREEN_WIDTH = 1000
-FPS = 40
+SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1100
+FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+RESET = pygame.image.load(os.path.join(IMG_DIR, "Other/Reset.png"))
+
+SHIELD_SOUND= pygame.mixer.Sound(os.path.join(IMG_DIR, 'Sounds/Shield_Halo.wav'))
+HAMMER_SOUND= pygame.mixer.Sound(os.path.join(IMG_DIR, 'Sounds/Martillo_de_mario.wav'))
+JUMP_SOUND = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Sounds/MARIO_JUMPING.wav'))
+END_SOUND = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Sounds/END_GAME.wav'))
+HIT_SOUND = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Sounds/DINO_HIT.wav'))
+
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -64,14 +74,24 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+DEAD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDead.png"))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
-LIVES = 4
-
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
+FONDO_MENU = pygame.image.load(os.path.join(IMG_DIR, 'Other/fondo_menu.png'))
 
 DEFAULT_TYPE = "default"
-SHIELD_TYPE = "shield"
-HAMMER_TYPE = "hammer"
+
+FONT_ARIAL = pygame.font.match_font('arial')
+
+LIVES = 5
+
+HEART_MORE = 0
+
+HEART_TYPE = 'hearts'
+
+SHIELD_TYPE = 'shield'
+
+HAMMER_TYPE = 'hammer'

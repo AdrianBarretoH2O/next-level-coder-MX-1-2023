@@ -1,9 +1,11 @@
+import random 
+
 from dino_runner.components.obstacles.obstacle import Obstacle
-import random
 
 
 class Cactus(Obstacle):
-    def __init__(self,image):
+    def __init__(self, image, coords):
         self.type = random.randint(0,2)
-        super().__init__(image,self.type) 
-        self.rect.y = 380
+        super().__init__(image,self.type)
+        self.rect.y = coords 
+    
